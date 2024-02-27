@@ -1,51 +1,106 @@
-baseurl: '/'
-permalink: pretty
-title: 'Jekyll Serif'
+# ----
+# Site
 
-logo:
-  mobile: "images/logo/logo-mobile.svg"
-  mobile_height: "32px"
-  mobile_width: "32px"
-  desktop: "images/logo/logo.svg"
-  desktop_height: "32px"
-  desktop_width: "120px"
+title: Hydra Template
+url: "https://proud-alligator.cloudvent.net"
+baseurl:
+google_analytics_key:
+google_maps_javascript_api_key:
+disqus_shortname:
 
-home: 
-  limit_services: 6
+# Values for the jekyll-seo-tag gem (https://github.com/jekyll/jekyll-seo-tag)
+logo: /siteicon.png
+description: Product marketing template for Jekyll.
+author:
+  name:
+  email:
+  twitter: # twitter username without the @ symbol
+social:
+  name: Hydra Template
+  links:
+    - https://github.com/CloudCannon/hydra-jekyll-template
+
+# -----
+# Build
+
+timezone: Etc/UTC
 
 collections:
-  services:
-    output: true
-    sort_by: weight
-  team:
-    output: true
+  staff_members:
+    _hide_content: true
+
+paginate: 10
+paginate_path: "/blog/:num/"
+permalink: pretty
 
 defaults:
   - scope:
       path: ""
-      type: "services"
+      type: "posts"
     values:
-      layout: "service"
+      layout: "post"
+      _options:
+        content:
+          width: 1500
+          height: 2500
   - scope:
       path: ""
-      type: "team"
+      type: "staff_members"
     values:
-      layout: "team"
+      _options:
+        image_path:
+          width: 600
+          height: 600
+  - scope:
+      path: ""
+    values:
+      layout: "page"
+  - scope:
+      path: "index.html"
+    values:
+      layout: "default"
+  - scope:
+      path: "contact.html"
+    values:
+      full_width: true
 
-sass:
-  style: compressed # possible values: nested expanded compact compressed
+jekyll-archives:
+  enabled:
+    - categories
 
 plugins:
-  - jekyll-environment-variables
+  - jekyll-archives
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-feed
+  - jekyll-paginate
 
 exclude:
   - Gemfile
   - Gemfile.lock
-  - node_modules
-  - vendor/bundle/
-  - vendor/cache/
-  - vendor/gems/
-  - vendor/ruby/
-  - LICENSE.md
-  - LICENSE
   - README.md
+  - LICENCE
+
+# -----------
+# CloudCannon
+
+_select_data:
+  social_icons:
+    - Facebook
+    - Instagram
+    - LinkedIn
+    - Pinterest
+    - Tumblr
+    - Twitter
+    - YouTube
+    - RSS
+
+_comments:
+  map: Update the map location and display settings.
+  latitude: Coordinates for the center marker on the map.
+  longitude: Coordinates for the center marker on the map.
+  zoom: The zoom level for the map.
+  pricing_table: Update the information in the pricing tables.
+  highlight: Emphasis the text
+  color: The background colour used in the plan name and call to action.
+  new_window: Open link in new window
